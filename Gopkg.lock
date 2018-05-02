@@ -7,6 +7,12 @@
   revision = "782f4967f2dc4564575ca782fe2d04090b5faca8"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/dstorck/gogo"
+  packages = ["."]
+  revision = "6fd1838cbfc9613eb7835eac91b07c92ff32f787"
+
+[[projects]]
   name = "github.com/ghodss/yaml"
   packages = ["."]
   revision = "73d445a93680fa1a78ae23a5839bad48f32ba1ee"
@@ -77,6 +83,31 @@
   name = "github.com/json-iterator/go"
   packages = ["."]
   revision = "13f86432b882000a51c6e610c620974462691a97"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/samsung-cnct/cluster-controller"
+  packages = [
+    "pkg/apis/clustercontroller",
+    "pkg/apis/clustercontroller/v1alpha1",
+    "pkg/client/clientset/versioned",
+    "pkg/client/clientset/versioned/scheme",
+    "pkg/client/clientset/versioned/typed/clustercontroller/v1alpha1",
+    "pkg/client/clientset/versioned/typed/clustercontroller/v1alpha1/fake",
+    "pkg/client/informers/externalversions",
+    "pkg/client/informers/externalversions/clustercontroller",
+    "pkg/client/informers/externalversions/clustercontroller/v1alpha1",
+    "pkg/client/informers/externalversions/internalinterfaces",
+    "pkg/client/listers/clustercontroller/v1alpha1",
+    "pkg/signals"
+  ]
+  revision = "a58c1a81171bc9337e7f0433f7a291e2af61837a"
+
+[[projects]]
+  name = "github.com/sirupsen/logrus"
+  packages = ["."]
+  revision = "c155da19408a8799da419ed3eeb0cb5db0ad5dbc"
+  version = "v1.0.5"
 
 [[projects]]
   name = "github.com/spf13/pflag"
@@ -347,6 +378,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "7745962dfc54b534a6d65df78c48bb9ab4a35d751324d477e009da358f4018b2"
+  inputs-digest = "9c7c67c47b8e957e69b594a1d33d8a2cba219014071fb00e84bcde5c9a826904"
   solver-name = "gps-cdcl"
   solver-version = 1

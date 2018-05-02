@@ -273,12 +273,20 @@ func (c *Controller) updateKrakenClusterStatus(kc *samsungv1alpha1.KrakenCluster
 
 func (c *Controller) isClusterReady(kc *samsungv1alpha1.KrakenCluster) bool {
 	cluster := gogo.Juju{Name: string(kc.UID)}
-	return cluster.ClusterReady()
+	ok, err := cluster.ClusterReady()
+	if err != nil {
+		glog.Warningf("Cluster Ready Check returned error: %s", err)
+	}
+	return ok
 }
 
 func (c *Controller) isDestroyComplete(kc *samsungv1alpha1.KrakenCluster) bool {
 	cluster := gogo.Juju{Name: string(kc.UID)}
-	return cluster.DestroyComplete()
+	ok, err := cluster.DestroyComplete()
+	if err != nil {
+		glog.Warningf("Cluster Destroy Check returned error: %s", err)
+	}
+	return ok
 }
 
 func (c *Controller) createCluster(kc *samsungv1alpha1.KrakenCluster) error {
@@ -292,11 +300,9 @@ func (c *Controller) createCluster(kc *samsungv1alpha1.KrakenCluster) error {
 		Kind:   gogo.Maas,
 		Bundle: JujuBundle,
 		MaasCl: gogo.MaasCloud{
-			Type:     string(kc.UID),
 			Endpoint: MaasEndpoint,
 		},
 		MaasCr: gogo.MaasCredentials{
-			CloudName: string(kc.UID),
 			Username:  kc.Spec.CloudProvider.Credentials.Username,
 			MaasOauth: kc.Spec.CloudProvider.Credentials.Password,
 		},
